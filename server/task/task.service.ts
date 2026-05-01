@@ -104,3 +104,13 @@ export const createTaskFromNaturalLanguage = async (userInput: string) => {
     }
 }
 
+export const deleteTaskService = async (taskId: string) => {
+    try {
+        await prisma.task.delete({
+            where: { id: taskId }
+        });
+        return {message : "Deleted task successfully"};
+    } catch (error) {
+        throw error;
+    }
+}
