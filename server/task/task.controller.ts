@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createTaskFromNaturalLanguage, createTaskService, health, updateTaskService } from "./task.service"
+import { createTaskFromNaturalLanguage, createTaskService, deleteTaskService, health, updateTaskService } from "./task.service"
 
 interface UpdateParams {
     id: string;
@@ -40,5 +40,15 @@ export const createTaskTextHandler = async(req:Request,res:Response) => {
         res.status(201).json(task);
     } catch (error) {
          return res.status(500).json({ message: "Failed to create task", error });
+    }
+}
+
+export const deleteTaskHandler = async(req:Request<UpdateParams>,res:Response) => {
+    try {
+        const { id } = req.params;
+        const deleteTask = await deleteTaskService(id);
+        return res.status(200).json(deleteTask);
+    } catch (error) {
+        return res.status(500).json({ message: "Failed to delete status", error });
     }
 }
