@@ -85,6 +85,7 @@ npm start
 | `POST` | `/create` | Create a new task with structured data |
 | `POST` | `/create-from-text` | Create task from natural language text (AI-powered) |
 | `PATCH` | `/:id` | Update task status by ID |
+| `DELETE` | `/delete-task/:id` | Delete a task by ID |
 
 ### Example Requests
 
